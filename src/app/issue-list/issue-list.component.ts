@@ -8,7 +8,6 @@ import { Issue } from '../issue';
 })
 export class IssueListComponent implements OnInit {
 
-  statuses: string[] = ['NEW', 'DOING', 'DONE']
   selectedStatus = 'DOING'
   issues: Issue[] = [
     {

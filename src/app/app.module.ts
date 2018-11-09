@@ -13,12 +13,14 @@ import {
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RoutingModule } from './routing/routing.module';
+import { StatusFilterComponent } from './status-filter/status-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IssueListComponent,
-    MainPageComponent
+    MainPageComponent,
+    StatusFilterComponent
   ],
   imports: [
     BrowserModule,
