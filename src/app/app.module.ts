@@ -3,18 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatButtonModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatListModule
+} from '@angular/material';
+import { IssueListComponent } from './issue-list/issue-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IssueListComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
