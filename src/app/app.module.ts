@@ -10,11 +10,13 @@ import {
   MatListModule
 } from '@angular/material';
 import { IssueListComponent } from './issue-list/issue-list.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IssueListComponent
+    IssueListComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
