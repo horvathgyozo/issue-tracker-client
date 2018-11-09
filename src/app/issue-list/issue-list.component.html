@@ -1,18 +1,11 @@
 <h2>Issue list</h2>
 <mat-nav-list>
-  <a mat-list-item href="#">
-    <h3 matLine>Title 1</h3>
-    <p matLine>PC9, 2018-12-12</p>
-    <p matLine>Descrition1</p>
-  </a>
-  <a mat-list-item href="#">
-    <h3 matLine>Title 2</h3>
-    <p matLine>PC9, 2018-12-12</p>
-    <p matLine>Descrition2</p>
-  </a>
-  <a mat-list-item href="#">
-    <h3 matLine>Title 3</h3>
-    <p matLine>PC9, 2018-12-12</p>
-    <p matLine>Descrition3</p>
+  <a mat-list-item routerLink="#" *ngFor="let issue of issues">
+    <mat-icon *ngIf="issue.status === 'NEW'"   matListIcon style="color: red">fiber_new</mat-icon>
+    <mat-icon *ngIf="issue.status === 'DOING'" matListIcon style="color: orange">build</mat-icon>
+    <mat-icon *ngIf="issue.status === 'DONE'"  matListIcon style="color: green">done</mat-icon>
+    <h3 matLine>{{issue.title}}</h3>
+    <small matLine><mat-icon>place</mat-icon>{{issue.place}} <mat-icon style="font-size: smaller">access_time</mat-icon> {{issue.updated_at}}</small>
+    <p matLine>{{issue.description}}</p>
   </a>
 </mat-nav-list>
