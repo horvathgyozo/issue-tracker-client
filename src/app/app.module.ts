@@ -11,6 +11,7 @@ import {
 } from '@angular/material';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    RoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
