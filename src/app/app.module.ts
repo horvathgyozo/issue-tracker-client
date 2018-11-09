@@ -7,7 +7,8 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -27,6 +28,7 @@ import { RoutingModule } from './routing/routing.module';
     MatButtonModule,
     MatListModule,
     RoutingModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

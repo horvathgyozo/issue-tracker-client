@@ -1,6 +1,24 @@
 <h2>Issue list</h2>
+
+<!-- (change)="selectedStatus = group.value" -->
+<!-- (change)="onFilterChange(group.value)" -->
+<mat-button-toggle-group
+  (change)="onFilterChange(group.value)"
+  [value]="selectedStatus"
+  #group="matButtonToggleGroup"
+>
+  <mat-button-toggle value="">
+    ALL
+  </mat-button-toggle>
+  <mat-button-toggle value="{{status}}"
+    *ngFor="let status of statuses">
+    {{ status }}
+  </mat-button-toggle>
+</mat-button-toggle-group>
+<div>Selected value: {{selectedStatus}}</div>
+
 <mat-nav-list>
-  <a mat-list-item routerLink="#" *ngFor="let issue of issues">
+  <a mat-list-item routerLink="#" *ngFor="let issue of filteredIssues">
     <mat-icon *ngIf="issue.status === 'NEW'"   matListIcon style="color: red">fiber_new</mat-icon>
     <mat-icon *ngIf="issue.status === 'DOING'" matListIcon style="color: orange">build</mat-icon>
     <mat-icon *ngIf="issue.status === 'DONE'"  matListIcon style="color: green">done</mat-icon>

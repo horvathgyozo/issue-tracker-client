@@ -8,6 +8,8 @@ import { Issue } from '../issue';
 })
 export class IssueListComponent implements OnInit {
 
+  statuses: string[] = ['NEW', 'DOING', 'DONE']
+  selectedStatus = 'DOING'
   issues: Issue[] = [
     {
       'title': 'issue1',
@@ -38,10 +40,24 @@ export class IssueListComponent implements OnInit {
       'updated_at': '2018-11-11'
     },
   ];
+  filteredIssues: Issue[] = []
 
   constructor() { }
 
   ngOnInit() {
+    this.filterIssues()
   }
 
+  filterIssues() {
+    this.filteredIssues = this.selectedStatus === ''
+      ? this.issues
+      : this.issues.filter(
+          issue => issue.status === this.selectedStatus)
+  }
+
+  // (change)="onFilterChange(group.value)"
+  onFilterChange(value) {
+    this.selectedStatus = value;
+    this.filterIssues();
+  }
 }
