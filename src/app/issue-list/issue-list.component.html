@@ -3,12 +3,16 @@
 <status-filter [selectedStatus]="selectedStatus" (change)="onFilterChange($event)"></status-filter>
 
 <mat-nav-list>
-  <a mat-list-item routerLink="#" *ngFor="let issue of filteredIssues">
+  <a mat-list-item *ngFor="let issue of filteredIssues" (click)="selectedIssue = issue" [class.selected]="issue === selectedIssue">
     <mat-icon *ngIf="issue.status === 'NEW'"   matListIcon style="color: red">fiber_new</mat-icon>
     <mat-icon *ngIf="issue.status === 'DOING'" matListIcon style="color: orange">build</mat-icon>
     <mat-icon *ngIf="issue.status === 'DONE'"  matListIcon style="color: green">done</mat-icon>
     <h3 matLine>{{issue.title}}</h3>
-    <small matLine><mat-icon>place</mat-icon>{{issue.place}} <mat-icon style="font-size: smaller">access_time</mat-icon> {{issue.updated_at}}</small>
+    <small matLine>
+      <mat-icon>place</mat-icon>{{issue.place}}
+      <mat-icon>access_time</mat-icon> {{issue.updated_at}}</small>
     <p matLine>{{issue.description}}</p>
   </a>
 </mat-nav-list>
+
+<issue-form *ngIf="selectedIssue" [issue]="selectedIssue" (save)="onFormSave($event)"></issue-form>

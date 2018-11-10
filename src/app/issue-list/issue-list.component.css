@@ -7,3 +7,6 @@ small mat-icon {
   height: auto;
   width: auto;
 }
+a.selected {
+  background-color: orange;
+}

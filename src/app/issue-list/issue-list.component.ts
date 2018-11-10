@@ -8,55 +8,65 @@ import { Issue } from '../issue';
 })
 export class IssueListComponent implements OnInit {
 
-  selectedStatus = 'DOING'
+  selectedStatus = 'DOING';
   issues: Issue[] = [
     {
-      'title': 'issue1',
-      'description': 'Some long description about issue 1',
-      'place': 'PC6',
-      'status': 'NEW',
-      'updated_at': '2018-11-11'
+      id: 1,
+      title: 'issue1',
+      description: 'Some long description about issue 1',
+      place: 'PC6',
+      status: 'NEW',
+      updated_at: '2018-11-11'
     },
     {
-      'title': 'issue2',
-      'description': 'Some long description about issue 1',
-      'place': 'PC6',
-      'status': 'DOING',
-      'updated_at': '2018-11-11'
+      id: 2,
+      title: 'issue2',
+      description: 'Some long description about issue 1',
+      place: 'PC6',
+      status: 'DOING',
+      updated_at: '2018-11-11'
     },
     {
-      'title': 'issue3',
-      'description': 'Some long description about issue 1',
-      'place': 'PC6',
-      'status': 'DOING',
-      'updated_at': '2018-11-11'
+      id: 3,
+      title: 'issue3',
+      description: 'Some long description about issue 1',
+      place: 'PC6',
+      status: 'DOING',
+      updated_at: '2018-11-11'
     },
     {
-      'title': 'issue4',
-      'description': 'Some long description about issue 1',
-      'place': 'PC6',
-      'status': 'DONE',
-      'updated_at': '2018-11-11'
+      id: 4,
+      title: 'issue4',
+      description: 'Some long description about issue 1',
+      place: 'PC6',
+      status: 'DONE',
+      updated_at: '2018-11-11'
     },
   ];
-  filteredIssues: Issue[] = []
+  filteredIssues: Issue[] = [];
+  selectedIssue: Issue = null;
 
   constructor() { }
 
   ngOnInit() {
-    this.filterIssues()
+    this.filterIssues();
   }
 
   filterIssues() {
     this.filteredIssues = this.selectedStatus === ''
       ? this.issues
       : this.issues.filter(
-          issue => issue.status === this.selectedStatus)
+          issue => issue.status === this.selectedStatus);
   }
 
   // (change)="onFilterChange(group.value)"
   onFilterChange(value) {
     this.selectedStatus = value;
     this.filterIssues();
+  }
+
+  onFormSave(issue: Issue) {
+    this.selectedIssue = issue;
+    this.selectedIssue = null;
   }
 }

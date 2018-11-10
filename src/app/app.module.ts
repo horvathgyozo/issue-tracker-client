@@ -8,19 +8,25 @@ import {
   MatIconModule,
   MatButtonModule,
   MatListModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatSelectModule
 } from '@angular/material';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RoutingModule } from './routing/routing.module';
 import { StatusFilterComponent } from './status-filter/status-filter.component';
+import { IssueFormComponent } from './issue-form/issue-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     IssueListComponent,
     MainPageComponent,
-    StatusFilterComponent
+    StatusFilterComponent,
+    IssueFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,11 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
     MatButtonModule,
     MatListModule,
     RoutingModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 export class Issue {
+  id: number = null;
   title = '';
   place = '';
   description = '';
