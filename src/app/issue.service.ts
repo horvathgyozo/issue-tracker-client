@@ -62,4 +62,20 @@ export class IssueService {
   getIssue(id): Promise<Issue> {
     return this.http.get<Issue>(`${this.issueUrl}/${id}`, httpOptions).toPromise();
   }
+
+  modifyIssue(id: number, issue: Issue): Promise<Issue> {
+    return this.http.put<Issue>(
+      `${this.issueUrl}/${id}`,
+      issue,
+      httpOptions
+    ).toPromise();
+  }
+
+  addIssue(issue: Issue): Promise<Issue> {
+    return this.http.post<Issue>(
+      `${this.issueUrl}`,
+      issue,
+      httpOptions
+    ).toPromise();
+  }
 }

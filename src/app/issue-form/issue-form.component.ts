@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Issue } from '../issue';
-import { ActivatedRoute } from '@angular/router';
-import { IssueService } from '../issue.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'issue-form',
@@ -37,16 +34,9 @@ export class IssueFormComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private issueService: IssueService,
-    private location: Location
   ) { }
 
-  async ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.issue = await this.issueService.getIssue(id);
-    this.form.patchValue(this.issue);
-  }
+  async ngOnInit() {}
 
   ngOnChanges() {
     this.form.patchValue(this.issue);
@@ -55,7 +45,6 @@ export class IssueFormComponent implements OnInit, OnChanges {
   onSubmit() {
     const emittedIssue = Object.assign(this.issue, this.form.value);
     this.save.emit(emittedIssue);
-    this.location.back();
   }
 
 }

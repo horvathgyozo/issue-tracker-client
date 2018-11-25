@@ -20,6 +20,7 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { IssueEditComponent } from './issue-edit/issue-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     IssueListComponent,
     MainPageComponent,
     StatusFilterComponent,
-    IssueFormComponent
+    IssueFormComponent,
+    IssueEditComponent
   ],
   imports: [
     BrowserModule,
