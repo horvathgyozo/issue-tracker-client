@@ -3,7 +3,10 @@ import { Issue } from './issue';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ='
+  })
 };
 
 @Injectable({
@@ -53,10 +56,10 @@ export class IssueService {
   ) { }
 
   getIssues(): Promise<Issue[]> {
-    return Promise.resolve(this.issues);
+    return this.http.get<Issue[]>(this.issueUrl, httpOptions).toPromise();
   }
 
-  getIssue(id) {
-    return this.issues.find(issue => issue.id === id);
+  getIssue(id): Promise<Issue> {
+    return this.http.get<Issue>(`${this.issueUrl}/${id}`, httpOptions).toPromise();
   }
 }

@@ -42,9 +42,9 @@ export class IssueFormComponent implements OnInit, OnChanges {
     private location: Location
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.issue = this.issueService.getIssue(id);
+    this.issue = await this.issueService.getIssue(id);
     this.form.patchValue(this.issue);
   }
 
