@@ -21,6 +21,7 @@ import { IssueFormComponent } from './issue-form/issue-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IssueEditComponent } from './issue-edit/issue-edit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IssueEditComponent } from './issue-edit/issue-edit.component';
     MainPageComponent,
     StatusFilterComponent,
     IssueFormComponent,
-    IssueEditComponent
+    IssueEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
