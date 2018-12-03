@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const httpOptions = {
+export const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': ''
@@ -42,8 +42,10 @@ export class AuthService {
   }
 
   logout() {
+    httpOptions.headers = httpOptions.headers.set('Authorization', ``);
     this.isLoggedIn = false;
     this.user = null;
+    this.token = null;
   }
 
 }
