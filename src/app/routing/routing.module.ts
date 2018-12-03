@@ -29,7 +29,10 @@ const routes: Routes = [
   {
     path: 'issues/:id/edit',
     component: IssueEditComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
   },
   {
     path: 'login',
@@ -38,8 +41,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)  ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   declarations: []
 })
 export class RoutingModule { }
