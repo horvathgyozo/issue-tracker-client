@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]],
   });
   hidePassword = true;
+  message: string;
 
   get username() { return this.form.get('username'); }
   get password() { return this.form.get('password'); }
@@ -29,17 +30,17 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
-    // try {
+    try {
       await this.authService.login(this.username.value, this.password.value);
       if (this.authService.redirectUrl) {
         this.router.navigate([this.authService.redirectUrl]);
       } else {
         this.router.navigate(['/']);
       }
-    // }
-    // catch(e) {
-    //   console.log(e);
-    // }
+    }
+    catch(e) {
+      this.message = 'Cannot log in!'
+    }
   }
 
 }

@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': ''
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +17,33 @@ export class AuthService {
   isLoggedIn: boolean = false;
   redirectUrl: string;
   user: User;
+  token: string;
 
-  constructor() { }
+  private authUrl = 'http://localhost:8080/users';
 
-  login(username: string, password: string): Promise<User> {
-    this.isLoggedIn = true;
-    this.user = new User();
-    this.user.username = 'Fake User';
-    return Promise.resolve(this.user);
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  async login(username: string, password: string): Promise<User> {
+    try {
+      const token = btoa(`${username}:${password}`);
+      httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
+      const user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
+      this.isLoggedIn = true;
+      this.user = user;
+      this.token = token;
+      return Promise.resolve(this.user);
+    }
+    catch (e) {
+      console.log(e);
+      return Promise.reject();
+    }
   }
 
   logout() {
     this.isLoggedIn = false;
     this.user = null;
   }
+
 }
